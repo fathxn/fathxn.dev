@@ -1,0 +1,29 @@
+---
+const { company, role, period, description, techs, location, rotate } = Astro.props;
+---
+<section id="experiences" class="space-y-6">
+  <!-- <div class="bg-white shadow-sm rounded-xl p-6"> -->
+   <div class={`bg-white shadow-sm rounded-xl p-6 ${rotate} hover:rotate-0 transition`}>
+    <!-- Header dengan info utama -->
+    <div class="flex justify-between items-start mb-2">
+      <div class="flex-1">
+        <h3 class="text-lg font-semibold">{role}</h3>
+        <p class="text-sm text-gray-500">{company}</p>
+      </div>
+      <div class="ml-4 text-right">
+        <!-- <p class="text-sm text-gray-500">{location}</p> -->
+        <p class="text-sm text-gray-500">{period}</p>
+      </div>
+    </div>
+
+    <!-- Description penuh lebar -->
+    <p class="text-gray-700 mb-4">{description}</p>
+
+    <!-- Tech stack icons -->
+    <div class="flex gap-3">
+      {techs.map((tech: { icon: string | null | undefined; name: string | null | undefined; }) => (
+        <img src={tech.icon} alt={tech.name} class="h-6 w-6" />
+      ))}
+    </div>
+  </div>
+</section>

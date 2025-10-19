@@ -1,11 +1,67 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Home from '../components/Home.astro';
+import Experience from '../components/Experience.astro';
+import Contact from '../components/Contact.astro';
+import Blog from '../components/Blog.astro';
+import Footer from '../components/Footer.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<Home />
+	<h2 class="text-2xl font-semibold mb-4">Work experience 💼</h2>
+	<Experience
+		company="PT Artajasa Pembayaran Elektronis"
+		role="Backend Engineer (Cita Kita)"
+		period="May 2025 - Present"
+		description="Developing and maintaining microservices for cross-border back-office systems using Golang, PostgreSQL, Redis, NATS, and Kubernetes."
+		location="Yogyakarta, Indonesia"
+		techs={[
+			{ name: "Golang", icon: "https://www.svgrepo.com/show/353795/go.svg" },
+			{ name: "PostgreSQL", icon: "https://www.svgrepo.com/show/303301/postgresql-logo.svg" },
+			{ name: "Redis", icon: "https://www.svgrepo.com/show/354272/redis.svg" },
+			{ name: "NATS", icon: "/icons/nats.svg" },
+			{ name: "Kubernetes", icon: "https://www.svgrepo.com/show/448233/kubernetes.svg" },
+			{ name: "Docker", icon: "https://www.svgrepo.com/show/448221/docker.svg" },
+		]}
+		rotate="rotate-1"
+		/>
+
+		<Experience
+		company="PT Nordspec Mandala Persada"
+		role="Backend Developer"
+		period="Nov 2024 - May 2025"
+		description="Built and optimized backend systems with Golang and Laravel, collaborating with the frontend team to deliver scalable applications."
+		location="Yogyakarta, Indonesia"
+		techs={[
+			{ name: "Golang", icon: "https://www.svgrepo.com/show/353795/go.svg" },
+			{ name: "Laravel", icon: "https://www.svgrepo.com/show/353985/laravel.svg" },
+			{ name: "MySQL", icon: "https://www.svgrepo.com/show/303251/mysql-logo.svg" },
+			{ name: "Javascript", icon: "https://www.svgrepo.com/show/349419/javascript.svg" },
+			{ name: "Docker", icon: "https://www.svgrepo.com/show/448221/docker.svg" },
+		]}
+		rotate="-rotate-1"
+		/>
+
+		<Experience
+		company="PT Jetorbit Teknologi Indonesia"
+		role="Creative Designer"
+		period="Jun 2022 - Nov 2024"
+		description="Craft and design for promotion banner, social media post, company design assets, UI/UX design, and everything related to creative design."
+		location="Yogyakarta, Indonesia"
+		techs={[
+			{ name: "Figma", icon: "https://www.svgrepo.com/show/448222/figma.svg" },
+			{ name: "Adobe Photoshop", icon: "https://www.svgrepo.com/show/7054/photoshop.svg" },
+			{ name: "Adobe Illustrator", icon: "https://www.svgrepo.com/show/12710/illustrator.svg" },
+		]}
+		rotate="rotate-1"
+		/>
+
+	<h2 class="text-2xl font-semibold mb-4">Recent posts 📝</h2>
+	<Blog />
+	<Footer />
+	<!-- <Contact /> -->
 </Layout>
