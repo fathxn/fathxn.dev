@@ -1,0 +1,148 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import { Icon } from "astro-icon/components";
+import { experiences, type ExperienceData } from "../../data/experiences";
+
+export function getStaticPaths() {
+  return experiences.map((exp) => ({
+    params: { slug: exp.slug },
+    props: { experience: exp },
+  }));
+}
+
+interface Props {
+  experience: ExperienceData;
+}
+
+const { experience } = Astro.props;
+---
+
+<Layout>
+  <div class="space-y-6">
+    <!-- Back Button -->
+    <a
+      href="/#experiences"
+      class="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors w-fit group"
+    >
+      <Icon
+        name="lucide:arrow-left"
+        class="w-4 h-4 transition-transform group-hover:-translate-x-0.5"
+      />
+      <span>Back to experiences</span>
+    </a>
+
+    <!-- Header Banner Card -->
+    <div class="bg-white shadow-sm rounded-xl p-6 space-y-4">
+      <div
+        class="flex flex-col sm:flex-row justify-between sm:items-start gap-2"
+      >
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">{experience.role}</h1>
+          <p class="text-base text-gray-600">{experience.company}</p>
+        </div>
+        <div class="text-left sm:text-right">
+          <span
+            class="inline-block px-3 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full mb-1"
+          >
+            {experience.period}
+          </span>
+          <p class="text-xs text-gray-400">{experience.location}</p>
+        </div>
+      </div>
+
+      <p
+        class="text-gray-700 leading-relaxed text-sm sm:text-base border-t border-gray-100 pt-4"
+      >
+        {experience.description}
+      </p>
+
+      <!-- Tech Stack Badges -->
+      <div class="pt-2">
+        <div class="flex flex-wrap gap-2">
+          {
+            experience.techs.map((tech) => (
+              <div class="flex items-center gap-2 px-3 py-1.5 bg-gray-50 rounded-lg text-xs font-medium text-gray-700 border border-gray-100 shadow-2xs">
+                <img
+                  src={tech.icon}
+                  alt={tech.name}
+                  class="h-4 w-4 object-contain"
+                />
+                <span>{tech.name}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Responsibilities Card -->
+    <div class="bg-white shadow-sm rounded-xl p-6 space-y-3">
+      <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-blue-600"
+        >
+          <polyline points="9 11 12 14 22 4"></polyline>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+          ></path>
+        </svg>
+        Key Responsibilities
+      </h2>
+      <ul class="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+        {
+          experience.responsibilities.map((item) => (
+            <li class="flex items-start gap-2.5">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Key Achievements Card (If present) -->
+    {
+      experience.keyAchievements && experience.keyAchievements.length > 0 && (
+        <div class="bg-white shadow-sm rounded-xl p-6 space-y-3">
+          <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-amber-500"
+            >
+              <circle cx="12" cy="8" r="7" />
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+            </svg>
+            Key Achievements
+          </h2>
+          <ul class="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+            {experience.keyAchievements.map((item) => (
+              <li class="flex items-start gap-2.5">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 flex-shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <Footer />
+  </div>
+</Layout>

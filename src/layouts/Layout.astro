@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import Navbar from '../components/Navbar.astro';
+import Navbar from "../components/Navbar.astro";
 ---
 
 <!doctype html>
@@ -10,11 +10,13 @@ import Navbar from '../components/Navbar.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Fathan - Backend Engineer</title>
+		<title>fathxn - backend engineer</title>
 	</head>
 	<body class="bg-neutral-50">
 		<Navbar />
-		<main class="max-w-2xl mx-auto px-6 py-6 space-y-8 opacity-0 animate-fadeIn">
+		<main
+			class="max-w-2xl mx-auto px-6 py-6 space-y-8 opacity-0 animate-fadeIn"
+		>
 			<slot />
 		</main>
 	</body>
